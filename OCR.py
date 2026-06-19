@@ -2,8 +2,13 @@ import pyautogui
 import time
 import sys
 import pydirectinput
+from pathlib import Path
+
 #!!!!!重要!!!!! 使用时用管理员权限运行，否则不对zmd生效
 #打开抽牌界面使用
+
+current_dir = Path(__file__).parent
+Asset = current_dir / "Asset"
 
 for i in range(1,4):
     print("start in "+str(4-i)+" seconds...")
@@ -17,7 +22,7 @@ def search(x,y,w,h):
         print("searching "+str(i))
         try:
             location = pyautogui.locateOnScreen(
-            'Sth/OCR/Asset/'+str(i)+'.png',
+            str(Asset)+'/'+str(i)+'.png',
             confidence=0.9,
             region=(x,y,w,h),
             )
